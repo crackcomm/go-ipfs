@@ -364,10 +364,8 @@ func callCommand(ctx context.Context, req cmds.Request, root *cmds.Command, cmd 
 		}
 
 		go func() {
-			err = cmds.Copy(re, res)
-			if err != nil {
-				re.SetError(err, cmdkit.ErrNormal|cmdkit.ErrFatal)
-			}
+			// TODO really don't check this one?
+			_ = cmds.Copy(re, res)
 		}()
 	} else {
 		log.Debug("executing command locally")
